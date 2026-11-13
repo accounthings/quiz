@@ -2523,6 +2523,48 @@ body .topic-table .th-short { display: none; }
     body .topic-table { min-width: 0; width: 100%; }
     body .topic-table th, body .topic-table td { padding-left: 8px; padding-right: 8px; }
 }
+
+/* ===== Cover: same page wash, card, button and ink as the rest of the app; button overlaps the card edge ===== */
+body .form-cover { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 0; min-height: 100%; padding: 22px 20px max(48px, env(safe-area-inset-bottom)); overflow: hidden; background: none; }
+body .form-cover::before, body .form-cover::after { content: ""; position: absolute; border: 1.5px solid rgba(31,141,196,0.14); border-radius: 50%; pointer-events: none; }
+body .form-cover::before { width: 560px; height: 560px; right: -220px; top: 10%; }
+body .form-cover::after { width: 820px; height: 820px; left: -420px; bottom: -400px; }
+body .cv-brand { position: relative; align-self: flex-start; margin: 0; color: var(--ink); font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
+body .cv-main { position: relative; flex: 1; width: 100%; max-width: 440px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 30px; padding: 24px 0 32px; }
+body .cv-main h1 { margin: 0; text-align: center; color: var(--ink); font-size: clamp(2rem, 7.4vw, 3.1rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; text-wrap: balance; }
+body .cv-accent { color: #1B7BAC; }
+body .cv-card { position: relative; width: 100%; padding: 30px 24px 54px; background: #FFFFFF; border: none; border-radius: 28px; text-align: center; box-shadow: var(--shadow-card); }
+body .cv-card-title { margin: 0 0 10px; font-size: 1.5rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
+body .cv-card-sub { margin: 0 auto; max-width: 34ch; font-size: 0.9375rem; line-height: 1.5; color: var(--text-muted); }
+body .cv-card .cover-start { position: absolute; left: 0; right: 0; bottom: -27px; margin: 0 auto; width: fit-content; min-width: 190px; padding: 0 40px; box-shadow: 0 12px 22px -10px rgba(14,90,138,0.6); }
+@media (prefers-reduced-motion: no-preference) {
+    body .cv-brand, body .cv-main h1, body .cv-card { opacity: 0; transform: translateY(12px); animation: tasteEnter 0.65s cubic-bezier(0.2,0.7,0.2,1) forwards; }
+    body .cv-main h1 { animation-delay: 0.06s; } body .cv-card { animation-delay: 0.14s; }
+}
+@media (min-width: 1024px) {
+    body .cv-main { max-width: 500px; gap: 34px; }
+    body .cv-main h1 { font-size: 3.4rem; }
+    body .cv-card { padding: 36px 32px 58px; }
+    body .cv-card-title { font-size: 1.75rem; }
+    body .cv-card-sub { font-size: 1rem; }
+    body .cv-brand { font-size: 1.15rem; }
+    body .form-cover { padding: 28px 36px 48px; }
+}
+@media (max-width: 520px) {
+    body .cv-main { gap: 26px; }
+    body .cv-card { padding: 26px 20px 52px; border-radius: 26px; }
+    body .cv-card-title { font-size: 1.375rem; }
+}
+
+/* ===== Subject rows: icon tile, two-line text, chevron ===== */
+body #subjectCardGrid { gap: 14px; }
+body #subjectCardGrid .checkbox-card { display: flex; align-items: center; gap: 16px; padding: 16px 18px 16px 16px; background: #FFFFFF; border: 1.5px solid #D5E6F1; border-radius: 24px; box-shadow: 0 10px 26px -18px rgba(14,90,138,0.45); cursor: pointer; }
+body #subjectCardGrid .checkbox-card:hover { background: #FFFFFF; border-color: var(--brand); }
+body .subject-row-icon { flex: none; width: 58px; height: 58px; border-radius: 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect x='7' y='3' width='20' height='28' rx='4.5' fill='%231F8DC4'/%3E%3Crect x='10.5' y='6.5' width='13' height='6' rx='1.6' fill='%23E8F5FC'/%3E%3Cg fill='white'%3E%3Crect x='10.5' y='15.8' width='3.5' height='3.2' rx='1'/%3E%3Crect x='15.25' y='15.8' width='3.5' height='3.2' rx='1'/%3E%3Crect x='20' y='15.8' width='3.5' height='3.2' rx='1'/%3E%3Crect x='10.5' y='20.2' width='3.5' height='3.2' rx='1'/%3E%3Crect x='15.25' y='20.2' width='3.5' height='3.2' rx='1'/%3E%3Crect x='10.5' y='24.6' width='3.5' height='3.2' rx='1'/%3E%3Crect x='15.25' y='24.6' width='3.5' height='3.2' rx='1'/%3E%3Crect x='20' y='20.2' width='3.5' height='7.6' rx='1'/%3E%3C/g%3E%3C/svg%3E") center / 44px no-repeat, radial-gradient(circle at 0 0, #E8F5FC 0 38%, transparent 39%), #C9E5F5; }
+body .subject-row-text { display: flex; flex: 1; flex-direction: column; gap: 4px; min-width: 0; text-align: left; }
+body #subjectCardGrid .checkbox-card .subject-row-name { font-size: 1.0625rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.25; color: var(--ink); }
+body .subject-row-meta { font-size: 0.875rem; font-weight: 500; line-height: 1.3; color: var(--text-muted); }
+body .subject-row-chevron { flex: none; width: 24px; height: 24px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B7BAC' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 5l7 7-7 7'/%3E%3C/svg%3E") center / 24px no-repeat; }
 </style>
 </head>
 <body>
@@ -2545,32 +2587,13 @@ body .topic-table .th-short { display: none; }
 
         <!-- Step 1: cover -->
         <div class="form-cover" id="formCover">
-            <div class="cover-card">
-                <p class="cover-brand">AccounThings: The Reviewer</p>
-                <h1>Find the accounting topics to study first</h1>
-                <p class="cover-lede">A diagnostic quiz for BSA and BSMA students. Pick a subject, answer the questions, and see which topics need review.</p>
-                <button type="button" class="btn cover-start" id="coverStartBtn">Start the quiz</button>
-            </div>
-            <div class="cover-stage" aria-hidden="true">
-                <p class="stage-brand">AccounThings: The Reviewer</p>
-                <div class="cover-frame">
-                    <div class="frame-title">Mastery per topic</div>
-                    <div class="frame-row" data-band="low" style="--v:33%"><span class="frame-name">Adjusting the Accounts</span><span class="frame-score">33%</span></div>
-                    <div class="frame-row" style="--v:67%"><span class="frame-name">Worksheets and Financial Statements</span><span class="frame-score">67%</span></div>
-                    <div class="frame-row" data-band="high" style="--v:100%"><span class="frame-name">Completing the Accounting Cycle</span><span class="frame-score">100%</span></div>
-                    <div class="frame-row" style="--v:67%"><span class="frame-name">Accounting for Merchandising Business</span><span class="frame-score">67%</span></div>
-                </div>
-                <div class="cover-chip">
-                    <svg viewBox="0 0 52 52"><circle class="chip-track" cx="26" cy="26" r="20"/><circle class="chip-fill" cx="26" cy="26" r="20" transform="rotate(-90 26 26)"/></svg>
-                    <div><b>67%</b><span class="chip-sub">Overall score</span></div>
-                </div>
-                <div class="cover-q">
-                    <div class="q-meta"><span>Question 3</span><span>3 of 21 answered</span></div>
-                    <div class="q-text">Which account increases with a debit?</div>
-                    <div class="q-opt on">Cash</div>
-                    <div class="q-opt">Accounts Payable</div>
-                    <div class="q-opt">Service Revenue</div>
-                    <div class="q-opt">Owner&rsquo;s Capital</div>
+            <p class="cv-brand">AccounThings: The Reviewer</p>
+            <div class="cv-main">
+                <h1>Find the accounting topics to <span class="cv-accent">study first</span></h1>
+                <div class="cv-card">
+                    <p class="cv-card-title">Take this quiz and find out.</p>
+                    <p class="cv-card-sub">A diagnostic quiz for BSA and BSMA students. Pick a subject, answer the questions, and see which topics need review.</p>
+                    <button type="button" class="btn cover-start" id="coverStartBtn">Start the quiz</button>
                 </div>
             </div>
         </div>
@@ -4852,9 +4875,18 @@ body .topic-table .th-short { display: none; }
                 const row = document.createElement('label');
                 row.className = 'checkbox-card';
                 row.innerHTML = `
-                    <input type="checkbox" />
-                    <span class="subject-row-name"></span>
-                    <span class="subject-row-count">${topicCount} ${topicCount === 1 ? 'topic' : 'topics'}</span>`;
+                    <input type="checkbox" tabindex="-1" aria-hidden="true" />
+                    <span class="subject-row-icon" aria-hidden="true"></span>
+                    <span class="subject-row-text">
+                        <span class="subject-row-name"></span>
+                        <span class="subject-row-meta">${topicCount} ${topicCount === 1 ? 'topic' : 'topics'}</span>
+                    </span>
+                    <span class="subject-row-chevron" aria-hidden="true"></span>`;
+                row.tabIndex = 0;
+                row.setAttribute('role', 'button');
+                row.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.click(); }
+                });
                 row.querySelector('.subject-row-name').textContent = subjObj.name;
                 row.addEventListener('click', (e) => {
                     e.preventDefault();
